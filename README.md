@@ -25,6 +25,15 @@ Extension methods to by pass the default and use an adapter explicitely :
 string overrideResult = Serialization.With.Json().Serialize(new { SomeText = "SomeText" });
 ```
 
+## ToDo
+
+- Find a good configuration api. I'm not satisfied with this first spike.
+- Implement stream apis on the adapters
+- Add more adapters
+- version the assemblies
+- Create nuget packages
+- Setup CI
+
 ## Contributing
 
 1. Fork it!

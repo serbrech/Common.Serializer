@@ -15,12 +15,12 @@ Serialization.Initialize(config =>
     config.DefaultAdapter = new DatacontractSerializerAdapter();
 });
 ```
-Normal usage :
+Using the default adapter (configured as above) :
 ```C#
 string serialized = Serialization.Serialize(new AClass { SomeText = "SomeText" });
 AClass deserialized = Serialization.Deserialize<AClass>(serialized);
 ```
-Extension methods to choose the serializer explicitely :
+Extension methods to by pass the default and use an adapter explicitely :
 ```C#
 string overrideResult = Serialization.With.Json().Serialize(new { SomeText = "SomeText" });
 ```

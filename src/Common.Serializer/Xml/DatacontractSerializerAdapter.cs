@@ -5,15 +5,15 @@ using System.Xml;
 
 namespace Common.Serializer.Xml
 {
-    public class DatacontractSerializerAdapter : ISerialize
+    public class DataContractSerializerAdapter : ISerialize
     {
         private readonly Encoding _encoding;
 
-        public DatacontractSerializerAdapter() : this(Encoding.UTF8)
+        public DataContractSerializerAdapter() : this(Encoding.UTF8)
         {
         }
 
-        public DatacontractSerializerAdapter(Encoding encoding)
+        public DataContractSerializerAdapter(Encoding encoding)
         {
             _encoding = encoding;
         }

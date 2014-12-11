@@ -29,10 +29,10 @@ namespace Common.Serializer.Tests
         {
             Serialization.Initialize(config =>
             {
-                config.DefaultAdapter = new DatacontractSerializerAdapter(Encoding.UTF8);
+                config.DefaultAdapter = new DataContractSerializerAdapter(Encoding.UTF8);
             });
 
-            Serialization.With.Default().Should().BeOfType<DatacontractSerializerAdapter>();
+            Serialization.With.Default().Should().BeOfType<DataContractSerializerAdapter>();
         }
 
         [Test]
@@ -40,10 +40,10 @@ namespace Common.Serializer.Tests
         {
             Serialization.Initialize(config =>
             {
-                config.DefaultAdapter = new DatacontractSerializerAdapter(Encoding.UTF8);
+                config.DefaultAdapter = new DataContractSerializerAdapter(Encoding.UTF8);
             });
 
-            Serialization.With.Json().Should().BeOfType<JsonSerializerAdapter>();
+            Serialization.With.Xml().Should().BeOfType<XmlSerializerAdapter>();
         }
     }
 }

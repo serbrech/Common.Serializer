@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using Common.Serializer.NewtonsoftJson;
 using Common.Serializer.Xml;
 using FluentAssertions;
 using NUnit.Framework;

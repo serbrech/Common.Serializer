@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Common.Serializer.NewtonsoftJson")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCopyright("Copyright © 2014 Stephane Erbrech")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

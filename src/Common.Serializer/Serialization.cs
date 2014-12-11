@@ -5,17 +5,12 @@ namespace Common.Serializer
 {
     public class Serialization
     {
-        public static SerializationConfiguration Configuration { get; internal set; }
+        private static readonly SerializationConfiguration Configuration;
 
         private static readonly Lazy<ISerializationContext> SerializationContext =
             new Lazy<ISerializationContext>(() => new SerializationContext(Configuration));
         
         public static ISerializationContext With { get { return SerializationContext.Value; } }
-        
-        private Serialization()
-        {
-            Configuration = Configuration;
-        }
 
         static Serialization()
         {

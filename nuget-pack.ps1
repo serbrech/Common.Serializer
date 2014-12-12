@@ -1,5 +1,16 @@
 
-New-Item publish -ItemType Directory -ErrorAction SilentlyContinue
-nuget pack .\src\Common.Serializer\Common.Serializer.csproj -OutputDirectory publish -Properties Configuration=Release
-nuget pack .\src\Common.Serializer.NewtonsoftJson\Common.Serializer.NewtonsoftJson.csproj -OutputDirectory publish -Properties Configuration=Release
-nuget pack .\src\Common.Serializer.YamlDotNet\Common.Serializer.YamlDotNet.csproj -OutputDirectory publish -Properties Configuration=Release
+if((Test-Path .\publish) -eq $false){
+    New-Item publish -ItemType Directory
+}
+
+Remove-Item .\publish\*
+
+write-host "cleared existing publish folder"
+write-host ""
+
+$packages = @("Common.Serializer",
+"Common.Serializer.NewtonsoftJson",
+"Common.Serializer.YamlDotNet"
+);
+
+$packages | % { nuget pack ".\src\$_\$($_).csproj" -OutputDirectory publish -Properties Configuration=Release -Build ; write-host "" }

@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <package>
   <metadata>
     <id>$id$</id>
@@ -8,6 +8,7 @@
     <owners>$author$</owners>
 
     <projectUrl>http://github.com/serbrech/Common.Serializer</projectUrl>
+    <licenseUrl>https://raw.githubusercontent.com/serbrech/Common.Serializer/master/License.txt</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes></releaseNotes>

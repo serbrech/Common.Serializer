@@ -27,11 +27,9 @@ string overrideResult = Serialization.With.Json().Serialize(new { SomeText = "So
 
 ## ToDo
 
-- Find a good configuration api. I'm not satisfied with this first spike.
+- Is the configuration api good enough?
 - Implement stream apis on the adapters
 - Add more adapters
-- version the assemblies
-- Create nuget packages
 - Setup CI
 
 ## Contributing

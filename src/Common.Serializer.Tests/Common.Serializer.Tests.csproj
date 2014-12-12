@@ -67,13 +67,13 @@
       <Project>{b998e160-b301-4f85-8f4b-79b23bf1b4b4}</Project>
       <Name>Common.Serializer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Common.Serializer.NewtonsoftJson\Common.Serializer.Newtonsoft.csproj">
+    <ProjectReference Include="..\Common.Serializer.NewtonsoftJson\Common.Serializer.NewtonsoftJson.csproj">
       <Project>{965032B0-3CD0-441B-8731-26963A5442C4}</Project>
-      <Name>Common.Serializer.Newtonsoft</Name>
+      <Name>Common.Serializer.NewtonsoftJson</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Common.Serializer.YamlDotNet\Common.Serializer.Yaml.csproj">
+    <ProjectReference Include="..\Common.Serializer.YamlDotNet\Common.Serializer.YamlDotNet.csproj">
       <Project>{D7457C09-5438-48F0-B1BE-234226B85133}</Project>
-      <Name>Common.Serializer.Yaml</Name>
+      <Name>Common.Serializer.YamlDotNet</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

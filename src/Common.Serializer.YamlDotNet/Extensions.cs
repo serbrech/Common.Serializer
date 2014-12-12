@@ -1,6 +1,6 @@
 using YamlDotNet.Serialization;
 
-namespace Common.Serializer.Yaml
+namespace Common.Serializer.YamlDotNet
 {
     public static class Extensions
     {

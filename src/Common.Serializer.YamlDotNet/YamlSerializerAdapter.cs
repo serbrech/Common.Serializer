@@ -1,7 +1,8 @@
 ﻿using System.IO;
 using YamlDotNet.Serialization;
+using YamlDotNetSerializer = YamlDotNet.Serialization.Serializer;
 
-namespace Common.Serializer.Yaml
+namespace Common.Serializer.YamlDotNet
 {
     public class YamlSerializerAdapter : ISerialize
     {
@@ -17,7 +18,7 @@ namespace Common.Serializer.Yaml
         public string Serialize<T>(T obj)
         {
             var sw = new StringWriter();
-            var serializer = new YamlDotNet.Serialization.Serializer(_options, _namingConvention);
+            var serializer = new YamlDotNetSerializer(_options, _namingConvention);
             serializer.Serialize(sw, obj);
             return sw.ToString();
         }

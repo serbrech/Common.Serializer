@@ -12,7 +12,11 @@
     <description>$description$</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014 Stephane Erbrech</copyright>
-    <tags>common serialization serializer xml json bson yaml</tags>
+    <tags>common serialization serializer xml json bson yaml newtonsoft</tags>
+    <dependencies>
+      <dependency id="Common.Serializer" version="[,1.0)" />
+      <dependency id="YamlDotNet" version="3.4.0" />
+    </dependencies>
   </metadata>
   <files>
     <file src="..\..\LICENSE.txt" target="LICENSE.txt" />

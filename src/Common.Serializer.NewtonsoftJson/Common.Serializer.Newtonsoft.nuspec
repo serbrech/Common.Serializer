@@ -8,11 +8,16 @@
     <owners>$author$</owners>
 
     <projectUrl>http://github.com/serbrech/Common.Serializer</projectUrl>
+    <licenseUrl>https://raw.githubusercontent.com/serbrech/Common.Serializer/master/License.txt</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014 Stephane Erbrech</copyright>
-    <tags>common serialization serializer xml json bson yaml</tags>
+    <tags>common serialization serializer xml json bson yaml newtonsoft</tags>
+    <dependencies>
+      <dependency id="Common.Serializer" version="[,1.0)" />
+      <dependency id="Newtonsoft.Json" version="6.0.0" />
+    </dependencies>
   </metadata>
   <files>
     <file src="..\..\LICENSE.txt" target="LICENSE.txt" />

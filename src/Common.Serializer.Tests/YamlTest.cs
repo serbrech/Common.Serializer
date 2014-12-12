@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Common.Serializer.Yaml;
+using Common.Serializer.YamlDotNet;
 using FluentAssertions;
 using NUnit.Framework;
 

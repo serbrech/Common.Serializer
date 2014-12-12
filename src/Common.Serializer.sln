@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Serializer", "Common
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Serializer.Tests", "Common.Serializer.Tests\Common.Serializer.Tests.csproj", "{BEEE42AE-C559-442F-9840-6332F6F4012D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Serializer.Newtonsoft", "Common.Serializer.NewtonsoftJson\Common.Serializer.Newtonsoft.csproj", "{965032B0-3CD0-441B-8731-26963A5442C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Serializer.NewtonsoftJson", "Common.Serializer.NewtonsoftJson\Common.Serializer.NewtonsoftJson.csproj", "{965032B0-3CD0-441B-8731-26963A5442C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Serializer.Yaml", "Common.Serializer.YamlDotNet\Common.Serializer.Yaml.csproj", "{D7457C09-5438-48F0-B1BE-234226B85133}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Serializer.YamlDotNet", "Common.Serializer.YamlDotNet\Common.Serializer.YamlDotNet.csproj", "{D7457C09-5438-48F0-B1BE-234226B85133}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

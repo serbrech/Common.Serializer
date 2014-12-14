@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Binary\BinarySerializerAdapter.cs" />
+    <Compile Include="Binary\Extensions.cs" />
     <Compile Include="ISerializationContext.cs" />
     <Compile Include="Xml\DatacontractSerializerAdapter.cs" />
     <Compile Include="ISerialize.cs" />

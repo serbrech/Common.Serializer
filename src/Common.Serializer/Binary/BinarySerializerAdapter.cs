@@ -17,6 +17,11 @@ namespace Common.Serializer.Binary
                 return Convert.ToBase64String(memoryStream.ToArray());
             }
         }
+        public void Serialize<T>(Stream stream, T obj)
+        {
+            var binaryFormatter = new BinaryFormatter();
+            binaryFormatter.Serialize(stream, obj);
+        }
 
         public T Deserialize<T>(string serializedObj)
         {
@@ -28,5 +33,7 @@ namespace Common.Serializer.Binary
                 return (T)binaryFormatter.Deserialize(memoryStream);
             }
         }
+
+        
     }
 }

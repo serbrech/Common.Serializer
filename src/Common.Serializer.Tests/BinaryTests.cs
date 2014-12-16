@@ -2,6 +2,7 @@
 using Common.Serializer.Binary;
 using FluentAssertions;
 using NUnit.Framework;
+using System.IO;
 
 namespace Common.Serializer.Tests
 {
@@ -35,6 +36,18 @@ namespace Common.Serializer.Tests
         {
             var result = Serialization.Serialize(new IsSerializable { IntProp = 1, SomeString = "Test" });
             result.Should().Be(Base64Encoded);
+        }
+
+        [Test]
+        public void TestStreamSerialize()
+        {
+            using (var stream = new MemoryStream())
+            {
+                Serialization.Serialize(stream, new IsSerializable { IntProp = 1, SomeString = "Test" });
+                stream.Position = 0;
+                var outStr = Convert.ToBase64String(stream.ToArray());
+                outStr.Should().Be(Base64Encoded);
+            }
         }
 
         [Test]

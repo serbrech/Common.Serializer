@@ -1,5 +1,6 @@
 ﻿using System;
 using Common.Serializer.Xml;
+using System.IO;
 
 namespace Common.Serializer
 {
@@ -23,6 +24,11 @@ namespace Common.Serializer
         public static string Serialize<T>(T obj)
         {
             return With.Default().Serialize(obj);
+        }
+
+        public static void Serialize<T>(Stream stream, T obj)
+        {
+            With.Default().Serialize(stream, obj);
         }
 
         public static T Deserialize<T>(string serializedObj) where T : new()

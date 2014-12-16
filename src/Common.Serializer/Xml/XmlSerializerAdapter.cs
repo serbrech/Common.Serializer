@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Xml.Serialization;
 
 namespace Common.Serializer.Xml
@@ -14,6 +15,12 @@ namespace Common.Serializer.Xml
                 return writer.ToString();
             }
         }
+        public void Serialize<T>(Stream stream, T obj)
+        {
+            var sw = new StreamWriter(stream, System.Text.Encoding.GetEncoding("UTF-16"));
+            var serializer = new XmlSerializer(typeof(T));
+            serializer.Serialize(sw, obj);
+        }
 
         public T Deserialize<T>(string serializedObj)
         {
@@ -23,5 +30,7 @@ namespace Common.Serializer.Xml
                 return (T) serializer.Deserialize(reader);
             }
         }
+
+        
     }
 }

@@ -2,12 +2,20 @@ using System.Collections.Generic;
 using Common.Serializer.YamlDotNet;
 using FluentAssertions;
 using NUnit.Framework;
+using System.IO;
 
 namespace Common.Serializer.Tests
 {
     [TestFixture]
     public class YamlTest
     {
+        string serializedYamlString = "IntProp: 1000\r\nSomeString: This is some nasty string... not really\r\n";
+        SerializeMe deserializedType = new SerializeMe
+        {
+            IntProp = 1000,
+            SomeString = "This is some nasty string... not really"
+        };
+
         [SetUp]
         public void Setup()
         {
@@ -20,25 +28,30 @@ namespace Common.Serializer.Tests
         [Test]
         public void SerializeTest()
         {
-            var serializeMe = new SerializeMe
-            {
-                IntProp = 1000,
-                SomeString = "This is some nasty string... not really"
-            };
-
-            Serialization.Serialize(serializeMe)
-                .Should().Be("IntProp: 1000\r\nSomeString: This is some nasty string... not really\r\n");
+            Serialization.Serialize(deserializedType)
+                .Should().Be(serializedYamlString);
         }
 
+        [Test]
+        public void SerializeStreamTest()
+        {
+            using (var stream = new MemoryStream())
+            {
+                Serialization.Serialize(stream, deserializedType);
+                stream.Position = 0;
+                var sr = new StreamReader(stream);
+                var myStr = sr.ReadToEnd();
+                myStr.Should().Be(serializedYamlString);
+            }
+        }
 
         [Test]
         public void DeSerializeTest()
         {
-            var serializedObj = "IntProp: 1000\r\nSomeString: This is some nasty string... not really\r\n";
+            var serializedObj = serializedYamlString;
             var result = Serialization.Deserialize<SerializeMe>(serializedObj);
-            result.IntProp.Should().Be(1000);
-            result.SomeString.Should().Be("This is some nasty string... not really");
-
+            result.IntProp.Should().Be(deserializedType.IntProp);
+            result.SomeString.Should().Be(deserializedType.SomeString);
         }
 
         [Test]

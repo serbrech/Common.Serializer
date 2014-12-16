@@ -2,6 +2,7 @@
 using FluentAssertions;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Common.Serializer.Tests
 {
@@ -29,6 +30,18 @@ namespace Common.Serializer.Tests
         {
             Serialization.Serialize(deserializedType)
             .Should().Be(serializedString);
+        }
+
+        [Test]
+        public void SerializeStreamTest()
+        {
+            using (var stream = new MemoryStream()) {
+                Serialization.Serialize(stream, deserializedType);
+                stream.Position = 0;
+                var sr = new StreamReader(stream);
+                var myStr = sr.ReadToEnd();
+                myStr.Should().Be(serializedString);
+            }
         }
 
         [Test]

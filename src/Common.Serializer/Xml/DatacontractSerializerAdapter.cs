@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Xml;
@@ -27,7 +28,11 @@ namespace Common.Serializer.Xml
                 return _encoding.GetString(memoryStream.ToArray());
             }
         }
-
+        public void Serialize<T>(Stream stream, T obj)
+        {
+            var serializer = new DataContractSerializer(typeof(T));
+            serializer.WriteObject(stream, obj);
+        }
         public T Deserialize<T>(string serializedObj)
         {
             using (XmlReader reader = XmlReader.Create(new StringReader(serializedObj)))
@@ -37,5 +42,6 @@ namespace Common.Serializer.Xml
             }
         }
 
+        
     }
 }

@@ -34,6 +34,12 @@ namespace Common.Serializer.Binary
             }
         }
 
-        
+        public T Deserialize<T>(Stream binaryStream)
+        {
+            var binaryFormatter = new BinaryFormatter();
+            binaryStream.Seek(0, SeekOrigin.Begin);
+            return (T)binaryFormatter.Deserialize(binaryStream);
+        }
+
     }
 }

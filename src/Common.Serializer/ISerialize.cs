@@ -8,6 +8,7 @@ namespace Common.Serializer
         void Serialize<T>(Stream stream, T obj);
 
         T Deserialize<T>(string serializedObj);
+        T Deserialize<T>(Stream stream);
 
     }
 }

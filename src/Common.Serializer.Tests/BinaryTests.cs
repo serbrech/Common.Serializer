@@ -57,5 +57,28 @@ namespace Common.Serializer.Tests
             var result = Serialization.Deserialize<IsSerializable>(Base64Encoded);
             Assert.AreEqual(expected.IntProp, result.IntProp);
         }
+
+        [Test]
+        public void TestStreamDeserialize()
+        {
+            using (var stream = new MemoryStream())
+            {
+                Serialization.Serialize(stream, new IsSerializable { IntProp = 5, SomeString = "Test" });
+                var adapter = new BinarySerializerAdapter();
+                var theType = adapter.Deserialize<IsSerializable>(stream);
+                theType.IntProp.Should().Be(5);
+            }
+        }
+
+        [Test]
+        public void TestDefaultStreamDeserializer()
+        {
+            using (var stream = new MemoryStream())
+            {
+                Serialization.Serialize(stream, new IsSerializable { IntProp = 5, SomeString = "Test" });
+                var result = Serialization.Deserialize<IsSerializable>(stream);
+                result.IntProp.Should().Be(5);
+            }
+        }
     }
 }

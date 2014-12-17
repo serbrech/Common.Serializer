@@ -23,6 +23,13 @@ namespace Common.Serializer.NewtonsoftJson
             return JsonConvert.DeserializeObject<T>(serializedObj);
         }
 
-        
+        public T Deserialize<T>(Stream jsonStream)
+        {
+            jsonStream.Position = 0;
+            var sr = new StreamReader(jsonStream);
+            var x = sr.ReadToEnd();
+            return JsonConvert.DeserializeObject<T>(x);
+        }
+
     }
 }

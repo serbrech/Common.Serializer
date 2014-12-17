@@ -52,6 +52,22 @@ namespace Common.Serializer.Tests
         }
 
         [Test]
+        public void DeserializeStreamTest()
+        {
+            using (var stream = new MemoryStream())
+            {
+                //Create stream
+                var sw = new StreamWriter(stream);
+                sw.Write(serializedString);
+                sw.Flush();
+                var adapter = new JsonSerializerAdapter();
+                var theType = adapter.Deserialize<SerializeMe>(stream);
+                theType.IntProp.Should().Be(1000);
+                theType.SomeString.Should().Be(deserializedType.SomeString);
+            }
+        }
+
+        [Test]
         public void SerializeTListTest()
         {
             IEnumerable<SerializeMe> list = new List<SerializeMe>{ deserializedType, deserializedType};

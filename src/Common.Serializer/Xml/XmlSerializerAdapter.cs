@@ -15,13 +15,14 @@ namespace Common.Serializer.Xml
                 return writer.ToString();
             }
         }
+
         public void Serialize<T>(Stream stream, T obj)
         {
             var sw = new StreamWriter(stream, System.Text.Encoding.GetEncoding("UTF-16"));
             var serializer = new XmlSerializer(typeof(T));
             serializer.Serialize(sw, obj);
         }
-
+        
         public T Deserialize<T>(string serializedObj)
         {
             using (var reader = new StringReader(serializedObj))
@@ -31,6 +32,15 @@ namespace Common.Serializer.Xml
             }
         }
 
-        
+        public T Deserialize<T>(Stream xmlStream)
+        {
+            xmlStream.Position = 0;
+            var sr = new StreamReader(xmlStream);
+            using (var reader = new StringReader(sr.ReadToEnd()))
+            {
+                var serializer = new XmlSerializer(typeof(T));
+                return (T)serializer.Deserialize(reader);
+            }
+        }
     }
 }

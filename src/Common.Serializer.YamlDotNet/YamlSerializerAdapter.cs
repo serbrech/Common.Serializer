@@ -35,5 +35,10 @@ namespace Common.Serializer.YamlDotNet
             serializer.Serialize(sw, obj);
             sw.Flush();
         }
+
+        public T Deserialize<T>(Stream stream)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -42,6 +42,14 @@ namespace Common.Serializer.Xml
             }
         }
 
-        
+        public T Deserialize<T>(Stream xmlStream)
+        {
+            xmlStream.Position = 0;
+            var sr = new StreamReader(xmlStream);
+            using (var str = new StringReader(sr.ReadToEnd()))
+            {
+                return this.Deserialize<T>(str.ToString());
+            }
+        }
     }
 }

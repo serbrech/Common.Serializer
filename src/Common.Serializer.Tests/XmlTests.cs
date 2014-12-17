@@ -48,5 +48,24 @@ namespace Common.Serializer.Tests
             Assert.AreEqual(expected.IntProp, result.IntProp);
         }
 
+        [Test]
+        public void TestDeserializeStream()
+        {
+            using (var stream = new MemoryStream())
+            {
+                //Create xmlMemoryStream stream
+                var sw = new StreamWriter(stream);
+                sw.Write(xmlSerialized);
+                sw.Flush();
+                //Deserialize
+                var adapter = new XmlSerializerAdapter();
+                var theType = adapter.Deserialize<SerializeMe>(stream);
+                //Assert
+                theType.IntProp.Should().Be(1);
+                theType.SomeString.Should().Be(deserializedType.SomeString);
+                theType.GetType().Should().Be(typeof(SerializeMe));
+            }
+        }
+
     }
 }

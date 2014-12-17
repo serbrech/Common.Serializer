@@ -36,6 +36,11 @@ namespace Common.Serializer
             return With.Default().Deserialize<T>(serializedObj);
         }
 
+        public static T Deserialize<T>(Stream serializedStream) where T : new()
+        {
+            return With.Default().Deserialize<T>(serializedStream);
+        }
+
         public static void Initialize(Action<SerializationConfiguration> configure)
         {
             configure(Configuration);

@@ -28,6 +28,10 @@ namespace Common.Serializer
 
         public static void Serialize<T>(Stream stream, T obj)
         {
+            if (!stream.CanWrite)
+            {
+                throw new IOException("The input stream is not writeable");
+            }
             With.Default().Serialize(stream, obj);
         }
 
@@ -38,6 +42,9 @@ namespace Common.Serializer
 
         public static T Deserialize<T>(Stream serializedStream) where T : new()
         {
+            if (!serializedStream.CanRead) {
+                throw new IOException("The serialized stream is not readable");
+            }
             return With.Default().Deserialize<T>(serializedStream);
         }
 

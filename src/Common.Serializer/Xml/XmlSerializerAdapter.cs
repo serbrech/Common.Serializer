@@ -18,7 +18,7 @@ namespace Common.Serializer.Xml
 
         public void Serialize<T>(Stream stream, T obj)
         {
-            var sw = new StreamWriter(stream, System.Text.Encoding.GetEncoding("UTF-16"));
+            var sw = new StreamWriter(stream, System.Text.Encoding.Unicode);
             var serializer = new XmlSerializer(typeof(T));
             serializer.Serialize(sw, obj);
         }

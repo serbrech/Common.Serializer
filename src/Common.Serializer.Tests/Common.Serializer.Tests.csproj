@@ -55,6 +55,7 @@
     <Compile Include="BinaryTests.cs" />
     <Compile Include="ConfigTest.cs" />
     <Compile Include="JsonTest.cs" />
+    <Compile Include="SerializationTests.cs" />
     <Compile Include="SerializeMe.cs" />
     <Compile Include="XmlTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

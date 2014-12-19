@@ -2,6 +2,7 @@
 using Common.Serializer.Binary;
 using FluentAssertions;
 using NUnit.Framework;
+using System.IO;
 
 namespace Common.Serializer.Tests
 {
@@ -38,11 +39,46 @@ namespace Common.Serializer.Tests
         }
 
         [Test]
+        public void TestStreamSerialize()
+        {
+            using (var stream = new MemoryStream())
+            {
+                Serialization.Serialize(stream, new IsSerializable { IntProp = 1, SomeString = "Test" });
+                stream.Position = 0;
+                var outStr = Convert.ToBase64String(stream.ToArray());
+                outStr.Should().Be(Base64Encoded);
+            }
+        }
+
+        [Test]
         public void TestDefaultDeserialize()
         {
             var expected = new IsSerializable() { IntProp = 1, SomeString = "Test"};
             var result = Serialization.Deserialize<IsSerializable>(Base64Encoded);
             Assert.AreEqual(expected.IntProp, result.IntProp);
+        }
+
+        [Test]
+        public void TestStreamDeserialize()
+        {
+            using (var stream = new MemoryStream())
+            {
+                Serialization.Serialize(stream, new IsSerializable { IntProp = 5, SomeString = "Test" });
+                var adapter = new BinarySerializerAdapter();
+                var theType = adapter.Deserialize<IsSerializable>(stream);
+                theType.IntProp.Should().Be(5);
+            }
+        }
+
+        [Test]
+        public void TestDefaultStreamDeserializer()
+        {
+            using (var stream = new MemoryStream())
+            {
+                Serialization.Serialize(stream, new IsSerializable { IntProp = 5, SomeString = "Test" });
+                var result = Serialization.Deserialize<IsSerializable>(stream);
+                result.IntProp.Should().Be(5);
+            }
         }
     }
 }
